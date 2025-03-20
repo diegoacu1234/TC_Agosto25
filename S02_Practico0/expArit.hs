@@ -40,4 +40,4 @@ eval m (Var x) =
    in (m, b)
 eval m (Asig x e) =
   let (m', v) = eval m e
-   in (upd x v m, v)
+   in (upd x v m', v)

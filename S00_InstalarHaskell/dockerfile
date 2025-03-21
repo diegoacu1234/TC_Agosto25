@@ -1,0 +1,14 @@
+FROM haskell:latest
+
+WORKDIR /
+
+COPY hola.hs .
+
+CMD ["ghci"]
+
+# Correr los siguientes comandos:
+
+# docker build -t haskell-app .
+# docker run --rm -it haskell-app
+
+# para cargar el archivo hola.hs escribir:  :l hola.hs

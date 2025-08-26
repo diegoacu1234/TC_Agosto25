@@ -1,4 +1,4 @@
-module Tablass (Tabla,lkup,upd,del,empty,getKeys) where
+module Table (Tabla,lkup,upd,del,empty,getKeys) where
 -- modulo abstrayendo la implementación
 
 data Tabla a b = T [(a,b)] deriving Show--data o newtype;

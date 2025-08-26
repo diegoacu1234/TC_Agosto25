@@ -1,5 +1,5 @@
 module Imports where
-import Tablass
+import Table
 
 -- a = T [] 
 -- no compila, no exporto el constructor T

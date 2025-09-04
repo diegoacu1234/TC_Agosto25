@@ -1,6 +1,5 @@
 module Practico0 where
 
-import Data.List(nub)
 -- Solo incluyo lo necesario para poder calcular el largo/cardinal de un conjunto
 
 --Paso 1: Necesito un símbolo nuevo para poder expresar la operacion cardinal.
@@ -29,10 +28,10 @@ Aclaración: \Downarrow representa la flecha del juicio evaluación
 
 	M , e \Downarrow  M' , c
 ---------------------------
-	M , #e \Downarrow  M', nub c
+	M , #e \Downarrow  M', length c
 -}
 
 eval :: Mem -> Exp -> (Mem, Val)
 eval m (Largo e) = let (m', C l) = eval m e
-					in (m', I (length (nub l))) -- necesito la I para que compile
+					in (m', I (length l)) -- necesito la I para que compile
 

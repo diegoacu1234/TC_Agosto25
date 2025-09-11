@@ -1,10 +1,13 @@
+data N = O | S N
 
-unos :: [Int]
-unos = 1: unos
+unos :: [N]
+unos = S O : unos
 
+len :: [a] -> N
+len [] = O
+len (_ : xs) = S (len xs)
 
 f :: Bool
-f case (length unos) of{
-		0 -> True;
-		S x -> False
-}
+f = case len unos of
+  O -> True
+  S x -> False

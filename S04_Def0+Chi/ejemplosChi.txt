@@ -1,0 +1,70 @@
+Ejemplos de programas en chi
+
+Pueden ser útil los siguientes tips:
+1. Escribir la función en "el Haskell de fundamentos" (llamado formalmente lambda H) puede ayudar
+2. Lo primero que deben preguntarse es si la función es recursiva para poner el operador rec.
+
+Van algunos ejemplos:
+
+--not
+\b.case b of [
+    True -> [] False[],
+    False -> [] True[]
+]
+
+-- predecesor
+\n. case n of [
+    O -> [] O[],
+    S -> [x] 
+]
+
+--par
+rec par. \n. case n of [
+    O -> [] True [],
+    S -> [x] ((\b.case b of [ True -> [] False[], False -> [] True[]]) (par x))  -- Notar que el not lo escribo dentro de par
+
+]
+
+-- length
+rec len. \l. case l of [
+    [] -> [] O[],
+    : -> [x,xs] S[len xs]
+]
+
+-- filter
+rec filter. \l. \p. case l of [
+    [] -> [][],
+    : -> [x,xs] case p x of [
+            True -> [] :[x,(filter xs) p],
+            False -> [] (filter xs) p
+    ]
+]
+
+--maximo entre dos numeros
+
+rec max. \m. \n. case m of[
+    O -> [] n,
+    S -> [x] case n of [
+                O -> [] m,
+                S -> [y] S[(max x) y]
+    ]
+]
+
+
+--altura de un arbol
+-- (para que quede legible el código voy a escribir MAX en lugar de copiar y pegar la función de arriba)
+
+rec altura. \t. case t of[
+    H -> [] O [],
+    N -> [i,x,d] S[(MAX (altura i)) (altura d)]
+]
+
+-- el código correcto (sin el MAX) aunque ilegible es:
+
+rec altura. \t. case t of[
+    H -> [] O [],
+    N -> [i,x,d] S[((rec max. \m. \n. case m of[ O -> [] n, S -> [x] case n of [ O -> [] m, S -> [y] S[(max x) y]]]) (altura i)) (altura d)]
+]
+
+
+

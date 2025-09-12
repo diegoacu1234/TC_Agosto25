@@ -1,3 +1,5 @@
+module Practico1 where
+
 data Exp
   = Var X
   | Cons K [Exp]

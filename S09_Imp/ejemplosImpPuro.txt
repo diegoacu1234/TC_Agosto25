@@ -1,0 +1,67 @@
+Van algunos ejemplos de sintaxis de programas en Imp puro (y sin usar funciones auxiliares)
+
+
+not:
+// pre: variable "b" en memoria con booleano asociado
+// post: retorna en "res" el resultado de negar "b"
+
+case b of [
+    True [] -> res := False[],
+    False [] -> res := True []
+]
+
+
+par: 
+// pre: variable "n" en memoria con natural asociado
+// post: retorna en "resPar" True sii "n" es par
+
+local n' {
+    n', resPar := n, True[];
+    while n' is [
+        S [x] -> { n' := x;
+                   case resPar of [
+                        True [] -> resPar := False [],
+                        False [] -> resPar := True [],
+                   ]        
+                }
+    ]
+}
+
+resta:
+//pre: "m", "n" naturales
+//post: en "res" retorno la resta de m con n (es decir: m - n)
+
+local m', n' {
+    m',n' := m,n; 
+    while n' is [
+        S [x] -> case m' of [
+                     O [] -> n' := O[],
+                     S [y] -> m',n' := y,x
+        ]
+    ]
+}
+
+
+suma:
+//pre: "m", "n" naturales
+//post: en "res" retorno la suma de m con n (es decir: m + n)
+
+local n' {
+    n', res := n, m;
+    while n' is [
+        S[x] ->  n', res := x, S[res]
+    ]
+}
+
+
+length: 
+//pre: variable "l" con lista
+//post: retorna en "res" el largo de la lista "l"
+
+local l' {
+    l',res := l, O[];
+    while l' is [
+        : [x,xs] -> l', res := xs, S[res]
+    ]
+}
+
